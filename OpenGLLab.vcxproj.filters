@@ -21,6 +21,9 @@
     <Image Include="container.jpg">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="container2.png">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="camera.cpp">

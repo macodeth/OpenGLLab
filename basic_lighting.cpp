@@ -172,15 +172,19 @@ int main()
         objectShader.use();
         objectShader.setVec3("objectColor", 1.0f, 0.0f, 0.0f);
         objectShader.setVec3("lightColor", 1.0f, 1.0f, 1.0f);
-        objectShader.setVec3("lightPos", lightPos);
         objectShader.setVec3("viewPos", camera.Position);
+        objectShader.setVec3("material.ambient", 1.0f, 0.5f, 0.31f);
+        objectShader.setVec3("material.diffuse", 1.0f, 0.5f, 0.31f);
+        objectShader.setVec3("material.specular", 0.5f, 0.5f, 0.5f);
+        objectShader.setFloat("material.shininess", 32.0f);
+        objectShader.setVec3("light.ambient", 0.2f, 0.2f, 0.2f);
+        objectShader.setVec3("light.diffuse", 0.5f, 0.5f, 0.5f);
+        objectShader.setVec3("light.specular", 1.0f, 1.0f, 1.0f);
+        objectShader.setVec3("light.position", lightPos);
 
         glm::mat4 view = camera.GetViewMatrix();
         glm::mat4 projection = glm::perspective(glm::radians(camera.Zoom), (float)SCR_WIDTH / SCR_HEIGHT, 0.1f, 100.0f);
         glm::mat4 model = glm::mat4(1.0f);
-        model[0][0] = 2;
-        model[1][1] = 1.5;
-        model[2][2] = 2.5;
         objectShader.setMat4("view", view);
         objectShader.setMat4("projection", projection);
         objectShader.setMat4("model", model);
@@ -223,13 +227,13 @@ void processInput(GLFWwindow* window)
     if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
         glfwSetWindowShouldClose(window, true);
     if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
-        camera.ProcessKeyboard(FORWARD, deltaTime);
+        camera.ProcessKeyboard(Camera_Movement::FORWARD, deltaTime);
     if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
-        camera.ProcessKeyboard(BACKWARD, deltaTime);
+        camera.ProcessKeyboard(Camera_Movement::BACKWARD, deltaTime);
     if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS)
-        camera.ProcessKeyboard(LEFT, deltaTime);
+        camera.ProcessKeyboard(Camera_Movement::LEFT, deltaTime);
     if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
-        camera.ProcessKeyboard(RIGHT, deltaTime);
+        camera.ProcessKeyboard(Camera_Movement::RIGHT, deltaTime);
 }
 
 // glfw: whenever the window size changed (by OS or user resize) this callback function executes
