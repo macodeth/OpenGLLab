@@ -1,0 +1,13 @@
+Download: 
+- CMake
+- glad: gl Version 3.3, Core Profile
+- glfw: Source package 3.3.7
+- glm
+- stb_image
+Install:
+- Use CMake to compile glfw
+
+VC++ Directories:
+- Include Directories: + glm/glm, glad/include, /glfw-3.3.7/include
+- Library Directories: + glm/glm, glfw-3.3.7/build/src/Debug
+Linker: + opengl32.lib, glfw3.lib
