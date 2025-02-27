@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="D:\GameDev\glfw-3.4\build\CMakeFiles\a697e934d3c1fbfc29033ccce8575700\update_mappings.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="D:\GameDev\glfw-3.4\src\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="D:\GameDev\glfw-3.4\src\mappings.h.in">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="D:\GameDev\glfw-3.4\CMake\GenerateMappings.cmake" />
+    <None Include="D:\GameDev\glfw-3.4\build\src\CMakeFiles\update_mappings" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{6B931B28-B67A-3CD8-8163-C25324538E56}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{FB0ED7FA-059E-3E7A-ACCC-874583187C2E}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
