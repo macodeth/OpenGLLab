@@ -36,6 +36,19 @@ Camera camera(glm::vec3(0.0f, 0.0f, 6.0f));
 
 glm::vec3 LightPos(1.0f, 1.0f, 2.0f);
 
+glm::vec3 CubePositions[] = {
+    glm::vec3(0.0f, 0.0f, 0.0f),
+    glm::vec3(2.0f, 5.0f, -15.0f),
+    glm::vec3(-1.5f, -2.2f, -2.5f),
+    glm::vec3(-3.8f, -2.0f, -12.3f),
+    glm::vec3(2.4f, -0.4f, -3.5f),
+    glm::vec3(-1.7f, 3.0f, -7.5f),
+    glm::vec3(1.3f, -2.0f, -2.5f),
+    glm::vec3(1.5f, 2.0f, -2.5f),
+    glm::vec3(1.5f, 0.2f, -1.5f),
+    glm::vec3(-1.3f, 1.0f, -1.5f)
+};
+
 int main()
 {
     // glfw: initialize and configure
@@ -185,15 +198,15 @@ int main()
         objectShader.setVec3("light.diffuse", 0.5f, 0.5f, 0.5f);
         objectShader.setVec3("light.specular", 1.0f, 1.0f, 1.0f);
         objectShader.setVec3("light.position", lightPos);
-
+        objectShader.setFloat("light.constant", 1.0f);
+        objectShader.setFloat("light.linear", 0.09f);
+        objectShader.setFloat("light.quadratic", 0.032f);
 
 
         glm::mat4 view = camera.GetViewMatrix();
         glm::mat4 projection = glm::perspective(glm::radians(camera.Zoom), (float)SCR_WIDTH / SCR_HEIGHT, 0.1f, 100.0f);
-        glm::mat4 model = glm::mat4(1.0f);
         objectShader.setMat4("view", view);
         objectShader.setMat4("projection", projection);
-        objectShader.setMat4("model", model);
 
         glActiveTexture(GL_TEXTURE0);
         glBindTexture(GL_TEXTURE_2D, diffuse);
@@ -202,14 +215,23 @@ int main()
 
         // render cube object under light
         glBindVertexArray(VAO);
-        glDrawArrays(GL_TRIANGLES, 0, sizeof(vertices) / stride);
+
+
+        for (unsigned int i = 0; i < 10; i++) {
+            glm::mat4 model = glm::mat4(1.0f);
+            model = glm::translate(model, CubePositions[i]);
+            model = glm::rotate(model, glm::radians(20.0f * i),
+                glm::vec3(1.0f, 0.3f, 0.5f));
+            objectShader.setMat4("model", model);
+            glDrawArrays(GL_TRIANGLES, 0, sizeof(vertices) / stride);
+        }
 
 
         // render lamp object
         lightShader.use();
         lightShader.setMat4("view", view);
         lightShader.setMat4("projection", projection);
-        model = glm::mat4(1.0f);
+        glm::mat4 model = glm::mat4(1.0f);
         model = glm::translate(model, lightPos);
         model = glm::scale(model, glm::vec3(0.2f));
         lightShader.setMat4("model", model);

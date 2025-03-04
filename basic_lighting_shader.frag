@@ -15,6 +15,9 @@ struct Light {
     vec3 ambient;
     vec3 diffuse;
     vec3 specular;
+	float constant;
+	float linear;
+	float quadratic;
 };
 
 uniform Light light;  
@@ -36,6 +39,9 @@ void main() {
 	vec3 reflectDir = reflect(-lightDir, norm);
 	float spec = pow(max(dot(viewDir, reflectDir), 0.0), material.shininess);
 	vec3 specular = light.specular * (spec * vec3(texture(material.specular, TexCoord)));
+	
+	float d = distance(light.position, FragPos);
+	float attenuation = 1.0 / (light.constant + d * light.linear + d * d * light.quadratic);
 
-	gl_FragColor = vec4((ambient + diffuse + specular), 1.0f);
+	gl_FragColor = vec4((ambient + diffuse + specular) * attenuation, 1.0f);
 }
