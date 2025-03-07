@@ -26,7 +26,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="basic_lighting.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="camera.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
@@ -41,6 +41,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="glad.c" />
+    <ClCompile Include="modelload.cpp" />
     <ClCompile Include="shader.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
     </ClCompile>
@@ -55,6 +56,9 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <None Include="assimp-5.4.3\build\bin\Debug\assimp-vc143-mtd.dll" />
+    <None Include="assimp-5.4.3\build\bin\Debug\assimp-vc143-mtd.pdb" />
+    <None Include="assimp-vc143-mtd.dll" />
     <None Include="basic_lighting_shader_light.frag" />
     <None Include="basic_lighting_shader_light.vert" />
     <None Include="basic_lighting_shader.frag" />
@@ -65,6 +69,8 @@
     <None Include="color_shader_light.vert" />
     <None Include="coorsys_shader.frag" />
     <None Include="coorsys_shader.vert" />
+    <None Include="modelloading.frag" />
+    <None Include="modelloading.vert" />
     <None Include="shader_shader.frag" />
     <None Include="shader_shader.vert" />
     <None Include="texture_shader.frag" />
@@ -75,6 +81,9 @@
     <ClInclude Include="Camera.h" />
     <ClInclude Include="ShaderManager.h" />
     <ClInclude Include="stb_image.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="assimp-vc143-mtd.lib" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
@@ -136,8 +145,8 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>.\glfw-3.4\include;.\glad\include;.\glm\glm;$(IncludePath)</IncludePath>
-    <LibraryPath>.\glfw-3.4\build\src\Debug;.\glm\glm;$(LibraryPath)</LibraryPath>
+    <IncludePath>.\glfw-3.4\include;.\glad\include;.\glm\glm;.\assimp-5.4.3\include;.\assimp-5.4.3\build\include;$(IncludePath)</IncludePath>
+    <LibraryPath>.\glfw-3.4\build\src\Debug;.\glm\glm;.\assimp-5.4.3\build\bin\Debug;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>

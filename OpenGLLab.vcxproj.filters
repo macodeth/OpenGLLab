@@ -59,6 +59,9 @@
     <ClCompile Include="basic_lighting.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="modelload.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="coorsys_shader.frag">
@@ -106,6 +109,11 @@
     <None Include="basic_lighting_shader_light.vert">
       <Filter>Source Files</Filter>
     </None>
+    <None Include="modelloading.frag" />
+    <None Include="modelloading.vert" />
+    <None Include="assimp-5.4.3\build\bin\Debug\assimp-vc143-mtd.dll" />
+    <None Include="assimp-5.4.3\build\bin\Debug\assimp-vc143-mtd.pdb" />
+    <None Include="assimp-vc143-mtd.dll" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ShaderManager.h">
@@ -117,5 +125,8 @@
     <ClInclude Include="Camera.h">
       <Filter>Source Files</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="assimp-vc143-mtd.lib" />
   </ItemGroup>
 </Project>
