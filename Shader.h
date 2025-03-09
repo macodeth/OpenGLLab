@@ -1,5 +1,5 @@
-#ifndef SHADERMANAGER_H
-#define SHADERMANAGER_H
+#ifndef SHADER_H
+#define SHADER_H
 
 #include<glad/glad.h>
 #include<string>
@@ -8,10 +8,10 @@
 #include<iostream>
 #include<glm.hpp>
 
-class ShaderManager {
+class Shader {
 	public:
 		unsigned int ID;
-		ShaderManager(const char* vertexPath, const char* fragmentPath) {
+		Shader(const char* vertexPath, const char* fragmentPath) {
 			std::string vertexCode;
 			std::string fragmentCode;
 			std::ifstream vShaderFile;

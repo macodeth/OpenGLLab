@@ -1,7 +1,7 @@
 #include<glad/glad.h>
 #include<GLFW/glfw3.h>
 
-#include "ShaderManager.h"
+#include "Shader.h"
 #include "Camera.h"
 #include "stb_image.h"
 
@@ -89,8 +89,8 @@ int main()
 
     // build and compile our shader program
     // ------------------------------------
-    ShaderManager objectShader("basic_lighting_shader.vert", "basic_lighting_shader.frag");
-    ShaderManager lightShader("basic_lighting_shader_light.vert", "basic_lighting_shader_light.frag");
+    Shader objectShader("basic_lighting_shader.vert", "basic_lighting_shader.frag");
+    Shader lightShader("basic_lighting_shader_light.vert", "basic_lighting_shader_light.frag");
 
     // set up vertex data (and buffer(s)) and configure vertex attributes
     // ------------------------------------------------------------------

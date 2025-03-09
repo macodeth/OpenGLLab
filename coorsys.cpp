@@ -1,7 +1,7 @@
 #include<glad/glad.h>
 #include<GLFW/glfw3.h>
 
-#include "ShaderManager.h"
+#include "Shader.h"
 #include "stb_image.h"
 
 #include<iostream>
@@ -61,7 +61,7 @@ int main()
 
     // build and compile our shader program
     // ------------------------------------
-    ShaderManager shader("coorsys_shader.vert", "texture_shader.frag"); // you can name your shader files however you like
+    Shader shader("coorsys_shader.vert", "texture_shader.frag"); // you can name your shader files however you like
 
     // set up vertex data (and buffer(s)) and configure vertex attributes
     // ------------------------------------------------------------------

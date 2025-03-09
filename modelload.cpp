@@ -1,7 +1,7 @@
 #include<glad/glad.h>
 #include<GLFW/glfw3.h>
 
-#include "ShaderManager.h"
+#include "Shader.h"
 #include "Camera.h"
 #include "stb_image.h"
 
@@ -65,7 +65,7 @@ class Mesh {
             this->textures = textures;
             setupMesh();
         }
-        void Draw(ShaderManager &shader) {
+        void Draw(Shader &shader) {
             unsigned int diffuseCount = 1;
             unsigned int specularCount = 1;
             for (unsigned int i = 0; i < textures.size(); i++) {
@@ -121,7 +121,7 @@ class Model {
         Model(std::string path) {
             loadModel(path);
         }
-        void Draw(ShaderManager &shader) {
+        void Draw(Shader &shader) {
             for (unsigned int i = 0; i < meshes.size(); i++)
                 meshes[i].Draw(shader);
         }
@@ -250,7 +250,7 @@ int main()
         return -1;
     }
 
-    ShaderManager lightShader("basic_lighting_shader_light.vert", "basic_lighting_shader_light.frag");
+    Shader lightShader("basic_lighting_shader_light.vert", "basic_lighting_shader_light.frag");
 
     // set up vertex data (and buffer(s)) and configure vertex attributes
     // ------------------------------------------------------------------
@@ -327,7 +327,7 @@ int main()
     glEnable(GL_DEPTH_TEST);
 
     Model backpack("./carrot/carrot.obj");
-    ShaderManager backpackShader("modelloading.vert", "modelloading.frag");
+    Shader backpackShader("modelloading.vert", "modelloading.frag");
 
     // render loop
     // -----------
